@@ -12,6 +12,7 @@
 body {
 	min-height: 100vh;
 	background: $bg_color;
+	overflow: hidden;
 	// @include size(100, 100);
 }
 @keyframes open {
@@ -61,20 +62,24 @@ body {
 	z-index: 10;
 	position: fixed;
 	width: 97.5%;
-	height: 70px;
-	border-radius: 15px;
-	background: $menu_bg_color;
+	height: 60px;
+	@include shadow($shadow_color);
+	@include main-radius('top', 20px);
+	@include main-radius('bottom', 20px);
+	// border-radius: 15px;
+	background-color: $bg_color;
 	top: 110px;
 	left: 20px;
-	padding: 15px 15px;
 	.bar_content {
-		border-radius: 10px;
+		@include main-radius('top', 10px);
+		@include main-radius('bottom', 10px);
+		// border-radius: 10px;
 		background-color: $bg_color;
 		width: 100%;
 		height: 100%;
 		outline: none;
 		border: none;
-		padding-left: 10px;
+		padding-left: 20px;
 		font-weight: bold;
 	}
 }

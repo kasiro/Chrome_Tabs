@@ -51,9 +51,7 @@ let reBind = (stop = false) => {
 					list[i-1].className = 'list active';
 					list[i-1].click();
 				}
-				setTimeout(() => {
-					Li_el.remove();
-				}, 20);
+				Li_el.remove();
 			}, 10);
 		});
 		Li_el.onclick = () => {
@@ -104,6 +102,12 @@ let BindPannels = () => {
 		});
 	}
 };
+// При закрытии вкладки показываются сразу 2 просртранства
+// (Bluetooth, New_Tab) к примеру (Сделать синхронизацию)
+
+// При закрытии смотрим Сколько блоков показано если больше одного
+// Смотрим вкладку с каким именем закрывали последней
+// И просртранства с таким именем Показываем
 var BindPannelsBool = false;
 let reFunc = function(){
 	$('ul').append(`<li class="list">
