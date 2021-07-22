@@ -8,7 +8,7 @@
 }
 @import 'scss/_in';
 @import 'scss/_Profile';
-@import 'scss/_terminal';
+@import 'scss/_Bluetooth';
 body {
 	min-height: 100vh;
 	background: $bg_color;
@@ -57,7 +57,29 @@ body {
 		// top: 100px;
 	}
 }
+.bar {
+	z-index: 10;
+	position: fixed;
+	width: 97.5%;
+	height: 70px;
+	border-radius: 15px;
+	background: $menu_bg_color;
+	top: 110px;
+	left: 20px;
+	padding: 15px 15px;
+	.bar_content {
+		border-radius: 10px;
+		background-color: $bg_color;
+		width: 100%;
+		height: 100%;
+		outline: none;
+		border: none;
+		padding-left: 10px;
+		font-weight: bold;
+	}
+}
 .navigation {
+	z-index: 10;
 	position: fixed;
 	top: 20px;
 	left: 20px;
@@ -74,7 +96,6 @@ body {
 		position: absolute;
 		top: 0;
 		width: 100%;
-		padding-left: 40px;
 		padding-right: 40px;
 		padding-top: 5px;
 		.add {
@@ -84,10 +105,10 @@ body {
 					font-size: 1.7em;
 					color: white;
 					border-radius: 50%;
-					transition: 0.5s;
+					// transition: 0.5s;
 					&:hover {
 						cursor: pointer;
-						transition: 0.5s;
+						// transition: 0.5s;
 						color: gray;
 						background-color: $bg_color;
 					}
@@ -95,70 +116,18 @@ body {
 			}
 		}
 		li {
+			user-select: none;
 			position: relative;
 			display: inline-block;
 			list-style: none;
-			// width: 58px;
 			margin-left: 40px;
 			padding-right: 15px;
-			// min-width: inherit;
-			// // padding-left: 5px;
-			// // padding-right: 20px;
 			max-width: $menu_width;
 			height: 100%;
-			border-top-left-radius: 20px;
-			border-top-right-radius: 20px;
 			margin-top: 5px;
-			// overflow-y: hidden;
-			// transition: 0.5s;
-
-			// &.Closed {
-			// 	animation: close 0.3s linear;
-			// 	animation: FadeOut 0.3s linear;
-			// 	width: 60px;
-			// 	a {
-			// 		.title {
-			// 			display: none;
-			// 		}
-			// 		.closeTab {
-			// 			display: none!important;
-			// 		}
-			// 	}
-			// }
-			b:nth-child(1) {
-				position: absolute;
-				left: -20px;
-				width: 20px;
-				height: 100%;
-				background: $bg_color;
-				display: none;
-				&::before {
-					content: '';
-					position: absolute;
-					top: 0;
-					left: 0;
-					@include size(100%, 100%);
-					border-bottom-right-radius: 20px;
-					background: $menu_bg_color;
-				}
-			}
-			b:nth-child(2) {
-				position: absolute;
-				right: -20px;
-				width: 20px;
-				height: 100%;
-				background: $bg_color;
-				display: none;
-				&::before {
-					content: '';
-					position: absolute;
-					top: 0;
-					left: 0;
-					@include size(100%, 100%);
-					border-bottom-left-radius: 20px;
-					background: $menu_bg_color;
-				}
-			}
+			@include main-radius('top', 20px);
+			@include b_component(1, 'right');
+			@include b_component(2, 'left');
 			a {
 				position: relative;
 				list-style: none;
@@ -167,6 +136,7 @@ body {
 				text-decoration: none;
 				color: white;
 				.icon {
+					user-select: none;
 					position: relative;
 					display: block;
 					min-width: 60px;
@@ -177,29 +147,31 @@ body {
 						font-size: 1.5em;
 					}
 				}
+				.icon:nth-child(2){
+					margin-left: -20px;
+				}
 				.title {
+					user-select: none;
 					position: relative;
 					display: block;
 					margin-left: -10px;
-					// padding-left: -20px;
 					height: 60px;
 					line-height: 60px;
-					// white-space: normal;
 				}
 				.closeTab {
-					// background: $menu_bg_color;
+					&:hover {
+						cursor: default!important;
+					}
 					position: relative;
 					display: none;
 					height: 60px;
 					line-height: 70px;
 					margin-left: 10px;
-					// padding: 0px 20px;
 					font-size: 1.5em;
 				}
 			}
 			&.active {
 				cursor: default!important;
-				
 				b:nth-child(1){
 					display: block;
 				}
@@ -226,6 +198,7 @@ body {
 					}
 					color: #333;
 					.closeTab {
+						cursor: pointer!important;
 						display: block;
 					}
 				}

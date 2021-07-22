@@ -1,0 +1,14 @@
+.BluetoothIcon {
+	position: relative;
+	top: 20px;
+	left: 20px;
+	font-size: 10em;
+	transition: 0.5s;
+	ion-icon {
+		&:hover {
+			cursor: pointer;
+			transition: 0.5s;
+			color: $menu_bg_color;
+		}
+	}
+}

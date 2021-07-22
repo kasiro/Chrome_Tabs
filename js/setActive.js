@@ -14,4 +14,9 @@ setTimeout(() => {
 			}
 		}
 	}
+	if (document.querySelectorAll('.list.active').length === 0){
+		var list = document.querySelectorAll('.list');
+		list[0].className = 'list active';
+		list[0].click();
+	}
 }, 1350);

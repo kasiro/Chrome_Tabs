@@ -7,6 +7,35 @@
 	min-width: $width;
 	min-height: $height;
 }
+@mixin main-radius($pos, $radius) {
+	@if $pos == top or $pos == bottom {
+		border-#{$pos}-left-radius: $radius;
+		border-#{$pos}-right-radius: $radius;
+	}
+}
 @mixin shadow($color) {
 	box-shadow: 0 8px 15px $color;
+}
+@mixin b_component($num, $pos) {
+	b:nth-child(#{$num}) {
+		position: absolute;
+		@if $pos == left {
+			right: -20px;
+		} @else {
+			left: -20px;
+		}
+		width: 20px;
+		height: 100%;
+		background: $bg_color;
+		display: none;
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			@include size(100%, 100%);
+			border-bottom-#{$pos}-radius: 20px;
+			background: $menu_bg_color;
+		}
+	}
 }

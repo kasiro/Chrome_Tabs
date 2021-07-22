@@ -10,7 +10,7 @@
   height: 700px;
   background: #f6f6f6;
   border-radius: 15px;
-  top: 120px;
+  top: 180px;
   left: 20px;
   transition: 0.5s; }
   .in.active {
@@ -71,52 +71,16 @@
     .profile_info .description .surname {
       margin-left: 5px; }
 
-.terminal {
-  width: 99%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  border-radius: 10px; }
-  .terminal .wrapper {
-    width: 99%;
-    height: 100%; }
-    .terminal .wrapper .user {
-      color: aquamarine; }
-    .terminal .wrapper .directory {
-      color: aqua; }
-    .terminal .wrapper .separator {
-      float: left;
-      width: 20px;
-      height: 20px;
-      margin-top: 20px;
-      color: white; }
-    .terminal .wrapper h4:not(.Output_text):first-child {
-      margin-left: 20px;
-      margin-right: 5px; }
-    .terminal .wrapper h4:not(.Output_text) {
-      float: left;
-      margin-top: 20px; }
-    .terminal .wrapper .textNode {
-      width: 75%;
-      height: 25px;
-      margin-top: 20px;
-      font-weight: bold;
-      color: rgba(0, 0, 0, 0.6);
-      background-color: transparent;
-      border: 0;
-      outline: none; }
-    .terminal .wrapper .Output {
-      width: 101%;
-      height: 95%;
-      border-radius: 10px; }
-      .terminal .wrapper .Output .Output_text {
-        margin-left: 20px;
-        float: left;
-        color: #4d5bf9; }
-    .terminal .wrapper .wrapperBg {
-      width: 99%;
-      height: 100%;
-      margin-top: -51.7%;
-      border-radius: 10px; }
+.BluetoothIcon {
+  position: relative;
+  top: 20px;
+  left: 20px;
+  font-size: 10em;
+  transition: 0.5s; }
+  .BluetoothIcon ion-icon:hover {
+    cursor: pointer;
+    transition: 0.5s;
+    color: #4d5bf9; }
 
 body {
   min-height: 100vh;
@@ -144,7 +108,28 @@ body {
   100% {
     max-width: 60px;
     padding-right: 0px; } }
+.bar {
+  z-index: 10;
+  position: fixed;
+  width: 97.5%;
+  height: 70px;
+  border-radius: 15px;
+  background: #4d5bf9;
+  top: 110px;
+  left: 20px;
+  padding: 15px 15px; }
+  .bar .bar_content {
+    border-radius: 10px;
+    background-color: #f6f6f6;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+    padding-left: 10px;
+    font-weight: bold; }
+
 .navigation {
+  z-index: 10;
   position: fixed;
   top: 20px;
   left: 20px;
@@ -160,7 +145,6 @@ body {
     position: absolute;
     top: 0;
     width: 100%;
-    padding-left: 40px;
     padding-right: 40px;
     padding-top: 5px; }
     .navigation ul .add {
@@ -168,14 +152,13 @@ body {
       .navigation ul .add .icon ion-icon {
         font-size: 1.7em;
         color: white;
-        border-radius: 50%;
-        transition: 0.5s; }
+        border-radius: 50%; }
         .navigation ul .add .icon ion-icon:hover {
           cursor: pointer;
-          transition: 0.5s;
           color: gray;
           background-color: #f6f6f6; }
     .navigation ul li {
+      user-select: none;
       position: relative;
       display: inline-block;
       list-style: none;
@@ -183,9 +166,9 @@ body {
       padding-right: 15px;
       max-width: 300px;
       height: 100%;
+      margin-top: 5px;
       border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
-      margin-top: 5px; }
+      border-top-right-radius: 20px; }
       .navigation ul li b:nth-child(1) {
         position: absolute;
         left: -20px;
@@ -226,6 +209,7 @@ body {
         text-decoration: none;
         color: white; }
         .navigation ul li a .icon {
+          user-select: none;
           position: relative;
           display: block;
           min-width: 60px;
@@ -234,7 +218,10 @@ body {
           text-align: center; }
           .navigation ul li a .icon ion-icon {
             font-size: 1.5em; }
+        .navigation ul li a .icon:nth-child(2) {
+          margin-left: -20px; }
         .navigation ul li a .title {
+          user-select: none;
           position: relative;
           display: block;
           margin-left: -10px;
@@ -247,6 +234,8 @@ body {
           line-height: 70px;
           margin-left: 10px;
           font-size: 1.5em; }
+          .navigation ul li a .closeTab:hover {
+            cursor: default !important; }
       .navigation ul li.active {
         cursor: default !important;
         background: #f6f6f6; }
@@ -270,6 +259,7 @@ body {
               transition: 0.5s;
               color: #4d5bf9; }
           .navigation ul li.active a .closeTab {
+            cursor: pointer !important;
             display: block; }
 
 .toggle {
