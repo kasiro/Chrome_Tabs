@@ -1,0 +1,308 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif; }
+
+.in {
+  position: absolute;
+  width: 1720px;
+  height: 700px;
+  background: #f6f6f6;
+  border-radius: 15px;
+  top: 120px;
+  left: 20px;
+  transition: 0.5s; }
+  .in.active {
+    width: 1570px;
+    height: 700px;
+    left: 350px; }
+  .in .panels {
+    display: flex;
+    flex-wrap: wrap; }
+    .in .panels .mini_panel {
+      position: relative;
+      user-select: none;
+      padding: 20px;
+      margin-top: 20px;
+      margin-left: 20px;
+      min-width: 200px;
+      max-width: 400px;
+      color: black;
+      max-height: 90px;
+      border-radius: 15px;
+      background: white;
+      transition: 0.5s; }
+      .in .panels .mini_panel .text {
+        float: left; }
+      .in .panels .mini_panel .icon-wrapper {
+        position: relative;
+        display: flex;
+        justify-content: flex-end; }
+        .in .panels .mini_panel .icon-wrapper ion-icon {
+          position: relative;
+          transition: 0.3s;
+          font-size: 3rem; }
+      .in .panels .mini_panel:hover {
+        cursor: pointer;
+        transition: 0.5s;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); }
+        .in .panels .mini_panel:hover ion-icon {
+          color: #4d5bf9;
+          transition: 0.3s; }
+
+.profile_info {
+  margin-left: 100px;
+  margin-top: 30px;
+  display: flex; }
+  .profile_info .avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%; }
+  .profile_info .description {
+    margin: 155px 0px 0px 20px;
+    width: 100%;
+    font-weight: bold;
+    font-size: 25px;
+    display: flex; }
+    .profile_info .description .field {
+      margin-right: 10px;
+      color: #4d5bf9; }
+    .profile_info .description .surname {
+      margin-left: 5px; }
+
+.terminal {
+  width: 99%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10px; }
+  .terminal .wrapper {
+    width: 99%;
+    height: 100%; }
+    .terminal .wrapper .user {
+      color: aquamarine; }
+    .terminal .wrapper .directory {
+      color: aqua; }
+    .terminal .wrapper .separator {
+      float: left;
+      width: 20px;
+      height: 20px;
+      margin-top: 20px;
+      color: white; }
+    .terminal .wrapper h4:not(.Output_text):first-child {
+      margin-left: 20px;
+      margin-right: 5px; }
+    .terminal .wrapper h4:not(.Output_text) {
+      float: left;
+      margin-top: 20px; }
+    .terminal .wrapper .textNode {
+      width: 75%;
+      height: 25px;
+      margin-top: 20px;
+      font-weight: bold;
+      color: rgba(0, 0, 0, 0.6);
+      background-color: transparent;
+      border: 0;
+      outline: none; }
+    .terminal .wrapper .Output {
+      width: 101%;
+      height: 95%;
+      border-radius: 10px; }
+      .terminal .wrapper .Output .Output_text {
+        margin-left: 20px;
+        float: left;
+        color: #4d5bf9; }
+    .terminal .wrapper .wrapperBg {
+      width: 99%;
+      height: 100%;
+      margin-top: -51.7%;
+      border-radius: 10px; }
+
+body {
+  min-height: 100vh;
+  background: #f6f6f6; }
+
+@keyframes open {
+  0% {
+    max-width: 58px; }
+  100% {
+    max-width: 300px; } }
+@keyframes FadeOut {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+@keyframes close {
+  0% {
+    max-width: 300px; }
+  25% {
+    max-width: 250px; }
+  50% {
+    max-width: 200px; }
+  75% {
+    max-width: 150px; }
+  100% {
+    max-width: 60px;
+    padding-right: 0px; } }
+.navigation {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  bottom: 20px;
+  width: 97.5%;
+  height: 70px;
+  border-radius: 15px;
+  box-sizing: initial;
+  border-top: 5px solid #4d5bf9;
+  background: #4d5bf9;
+  overflow-y: hidden; }
+  .navigation ul {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 5px; }
+    .navigation ul .add {
+      margin-left: 10px; }
+      .navigation ul .add .icon ion-icon {
+        font-size: 1.7em;
+        color: white;
+        border-radius: 50%;
+        transition: 0.5s; }
+        .navigation ul .add .icon ion-icon:hover {
+          cursor: pointer;
+          transition: 0.5s;
+          color: gray;
+          background-color: #f6f6f6; }
+    .navigation ul li {
+      position: relative;
+      display: inline-block;
+      list-style: none;
+      margin-left: 40px;
+      padding-right: 15px;
+      max-width: 300px;
+      height: 100%;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      margin-top: 5px; }
+      .navigation ul li b:nth-child(1) {
+        position: absolute;
+        left: -20px;
+        width: 20px;
+        height: 100%;
+        background: #f6f6f6;
+        display: none; }
+        .navigation ul li b:nth-child(1)::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border-bottom-right-radius: 20px;
+          background: #4d5bf9; }
+      .navigation ul li b:nth-child(2) {
+        position: absolute;
+        right: -20px;
+        width: 20px;
+        height: 100%;
+        background: #f6f6f6;
+        display: none; }
+        .navigation ul li b:nth-child(2)::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border-bottom-left-radius: 20px;
+          background: #4d5bf9; }
+      .navigation ul li a {
+        position: relative;
+        list-style: none;
+        width: 100%;
+        display: flex;
+        text-decoration: none;
+        color: white; }
+        .navigation ul li a .icon {
+          position: relative;
+          display: block;
+          min-width: 60px;
+          height: 60px;
+          line-height: 70px;
+          text-align: center; }
+          .navigation ul li a .icon ion-icon {
+            font-size: 1.5em; }
+        .navigation ul li a .title {
+          position: relative;
+          display: block;
+          margin-left: -10px;
+          height: 60px;
+          line-height: 60px; }
+        .navigation ul li a .closeTab {
+          position: relative;
+          display: none;
+          height: 60px;
+          line-height: 70px;
+          margin-left: 10px;
+          font-size: 1.5em; }
+      .navigation ul li.active {
+        cursor: default !important;
+        background: #f6f6f6; }
+        .navigation ul li.active b:nth-child(1) {
+          display: block; }
+        .navigation ul li.active b:nth-child(2) {
+          display: block; }
+        .navigation ul li.active a {
+          color: #333; }
+          .navigation ul li.active a .icon {
+            position: relative;
+            display: block;
+            min-width: 60px;
+            height: 60px;
+            line-height: 70px;
+            text-align: center; }
+            .navigation ul li.active a .icon ion-icon[name="file-tray-outline"] {
+              transition: 0.5s; }
+            .navigation ul li.active a .icon ion-icon[name="file-tray"] {
+              font-size: 1.5em;
+              transition: 0.5s;
+              color: #4d5bf9; }
+          .navigation ul li.active a .closeTab {
+            display: block; }
+
+.toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: #4d5bf9;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .toggle.active {
+    background: #ff4d89; }
+    .toggle.active ion-icon {
+      position: absolute;
+      color: white;
+      font-size: 34px;
+      display: none; }
+      .toggle.active ion-icon.open {
+        display: none; }
+      .toggle.active ion-icon.close {
+        display: block; }
+  .toggle ion-icon {
+    position: absolute;
+    color: white;
+    font-size: 34px;
+    display: none; }
+    .toggle ion-icon.open {
+      display: block; }
+    .toggle ion-icon.close {
+      display: none; }
+
+/*# sourceMappingURL=main.css.map */

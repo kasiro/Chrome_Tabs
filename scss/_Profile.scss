@@ -1,0 +1,34 @@
+@import '_vars';
+@mixin setProfile($size) {
+	$asize: ($size - 5px) * 10;
+	margin-left: 100px;
+	margin-top: 30px;
+	display: flex;
+	.avatar {
+		@include size($asize, $asize);
+		border-radius: 50%;
+	}
+	.description {
+		.field {
+			margin-right: 10px;
+			color: $menu_bg_color;
+			// font-size: $size;
+		}
+		margin: $asize - ($size + 20px) 0px 0px $size - 5px;
+		width: 100%;
+		.surname {
+			margin-left: 5px;
+		}
+		font-weight: bold;
+		font-size: $size;
+		display: flex;
+	}
+}
+.profile_info {
+	$ots: 25px;
+	@if $ots <= 25px and $ots >= 10px {
+		@include setProfile($ots);
+	} @else {
+		@include setProfile(20px);
+	}
+}

@@ -1,0 +1,39 @@
+-
+	var Fields = {
+		'cog': 'Settings',
+		'clipboard': 'ClipDiary',
+		'bluetooth': 'Bluetooth',
+		'bookmark': 'Bookmarks',
+		'color-palette': 'Designe',
+		'download': 'Downloads',
+		'game-controller': 'Games',
+		//- 'glasses': 'Glasses',
+	};
+	var FieldsFill = {
+		'funnel': 'Filter'
+	};
+
+.in
+	.profile(style="display: none")
+		.profile_info
+			img.avatar(src=components+"/img/avatar.jpg", alt="")
+			.description
+				.field='name:'
+				.name='Даня'
+				.surname='Каширских'
+	
+	.messages(style="display: none")
+		h1 messages
+	
+	.security(style="display: none")
+		h1 security
+
+	.help(style="display: none")
+		h1 help
+	
+	.New_Tab(style="display: none")
+		.panels
+			each text, icon in Fields
+				+mini_panel(icon, text)
+			each text, icon in FieldsFill
+				+mini_panel(icon, text, 'F')

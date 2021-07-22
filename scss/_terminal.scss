@@ -1,0 +1,57 @@
+@import '_vars';
+@import '_mixins';
+.terminal {
+	@include size(99%, 100%);
+	background-color: rgba($color: black, $alpha: 0.4);
+	border-radius: 10px;
+	.wrapper {
+		$marTop: 20px;
+		@include size(99%, 100%);
+		.user {
+			color: aquamarine;
+		}
+		.directory {
+			color: aqua;
+		}
+		.separator {
+			float: left;
+			@include size(20px, 20px);
+			margin-top: $marTop;
+			color: white;
+		}
+		h4:not(.Output_text):first-child {
+			margin-left: 20px;
+			margin-right: 5px;
+		}
+		h4:not(.Output_text) {
+			float: left;
+			margin-top: $marTop;
+		}
+		.textNode {
+			width: 75%;
+			height: 25px;
+			margin-top: $marTop;
+			// margin-left: 5px;
+			font-weight: bold;
+			color: rgba($color: black, $alpha: 0.6);
+			background-color: transparent;
+			border: 0;
+			outline:none;
+		}
+		.Output {
+			@include size(101%, 95%);
+			border-radius: 10px;
+			.Output_text {
+				margin-left: 20px;
+				float: left;
+				color: $menu_bg_color;
+			}
+		}
+		.wrapperBg {
+			@include size(99%, 100%);
+			margin-top: -51.7%;
+			border-radius: 10px;
+			// background-color: black;
+		}
+	}
+}

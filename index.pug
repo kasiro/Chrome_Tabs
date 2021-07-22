@@ -1,0 +1,86 @@
+extends main
+
+mixin mini_panel(icon, text, iconType='O')
+	//- a.mini_panel(href=dir+'/pages/grid/'+text+'.html')
+	.mini_panel
+		.text=text
+		.icon-wrapper
+			case iconType
+				when 'O'
+					+IconOutline(icon)
+					- break
+				when 'F'
+					+Icon(icon)
+					- break
+
+mixin list_el(link, icon, text, iconType='O')
+	li.list
+		b
+		b
+		a(href= link)
+			span.icon
+				+Icon('file-tray')(style="display: none;")
+				+IconOutline('file-tray')
+			span.icon
+				case iconType
+					when 'O'
+						+IconOutline(icon)
+						- break
+					when 'F'
+						+Icon(icon)
+						- break
+			span.title= text
+			.closeTab
+				+IconOutline('close')
+
+mixin Icon(icon)
+	ion-icon(name=icon)&attributes(attributes)
+
+mixin IconOutline(icon)
+	ion-icon(name=icon+'-outline')&attributes(attributes)
+
+mixin myeach(iterEl, spath='#', iconType='O')
+	each title, icon in iterEl
+		case spath
+			when '#'
+				- var path = '#'+title.toLowerCase();
+				- break
+			when 'full'
+				- var path = dir+'/'+title+'.html#'+title;
+				- break
+		case iconType
+			when 'O'
+				+list_el(path, icon, title)
+				- break
+			when 'F'
+				+list_el(path, icon, title, iconType)
+				- break
+
+block vars
+	-
+		var title = 'grid';
+	include mainvars
+
+block content
+	-
+		var FieldsMenu = {
+			'person': 'Profile',
+			'chatbubbles': 'Messages',
+			//- 'lock-closed': 'Security',
+			//- 'help': 'Help',
+			//- 'log-out': 'Sing_Out'
+		};
+		var FieldsMenuFill = {
+			//- 'terminal': 'Terminal'
+		};
+	.navigation
+		ul
+			+myeach(FieldsMenu)
+			+myeach(FieldsMenuFill, '#', 'F')
+			li.add
+				span.icon
+					+IconOutline('add')(class="add-tab")
+	include main_content
+
+mixin style(path)
+	link(rel="stylesheet", href= path)

@@ -1,0 +1,148 @@
+body {
+	min-height: 100vh;
+	background: $bg_color;
+	// @include size(100, 100);
+}
+.navigation {
+	position: fixed;
+	top: 20px;
+	left: 20px;
+	bottom: 20px;
+	width: $menu_width;
+	// border-radius: 15px;
+	box-sizing: initial;
+	border-left: 5px solid $menu_bg_color;
+	background: $menu_bg_color;
+	transition: 0.5s;
+	overflow-x: hidden;
+	ul {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		padding-left: 5px;
+		padding-top: 40px;
+		li {
+			position: relative;
+			list-style: none;
+			width: 100%;
+			border-top-left-radius: 20px;
+			border-bottom-left-radius: 20px;
+			margin-top: 20px;
+			b:nth-child(1) {
+				position: absolute;
+				top: -20px;
+				height: 20px;
+				width: 100%;
+				background: $bg_color;
+				display: none;
+				&::before {
+					content: '';
+					position: absolute;
+					top: 0;
+					left: 0;
+					@include size(100%, 100%);
+					border-bottom-right-radius: 20px;
+					background: $menu_bg_color;
+				}
+			}
+			b:nth-child(2) {
+				position: absolute;
+				bottom: -20px;
+				height: 20px;
+				width: 100%;
+				background: $bg_color;
+				display: none;
+				&::before {
+					content: '';
+					position: absolute;
+					top: 0;
+					left: 0;
+					@include size(100%, 100%);
+					border-top-right-radius: 20px;
+					background: $menu_bg_color;
+				}
+			}
+			a {
+				position: relative;
+				list-style: none;
+				width: 100%;
+				display: flex;
+				text-decoration: none;
+				color: white;
+				.icon {
+					position: relative;
+					display: block;
+					min-width: 60px;
+					height: 60px;
+					line-height: 70px;
+					text-align: center;
+					ion-icon {
+						font-size: 1.5em;
+					}
+				}
+				.title {
+					position: relative;
+					display: block;
+					padding-left: 10px;
+					height: 60px;
+					line-height: 60px;
+					white-space: normal;
+				}
+			}
+			&.active {
+				b:nth-child(1){
+					display: block;
+				}
+				b:nth-child(2){
+					display: block;
+				}
+				background: $bg_color;
+				a {
+					color: #333;
+				}
+			}
+		}
+	}
+}
+.toggle {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	width: 50px;
+	height: 50px;
+	background: $menu_bg_color;
+	border-radius: 10px;
+	cursor: pointer;
+	// display: flex;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	&.active {
+		background: $menu_bg_color_active;
+		ion-icon {
+			position: absolute;
+			color: white;
+			font-size: 34px;
+			display: none;
+			&.open {
+				display: none;
+			}
+			&.close {
+				display: block;
+			}
+		}
+	}
+	ion-icon {
+		position: absolute;
+		color: white;
+		font-size: 34px;
+		display: none;
+		&.open {
+			display: block;
+		}
+		&.close {
+			display: none;
+		}
+	}
+}
