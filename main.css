@@ -161,9 +161,7 @@ body {
         color: white;
         border-radius: 50%; }
         .navigation ul .add .icon ion-icon:hover {
-          cursor: pointer;
-          color: gray;
-          background-color: #f6f6f6; }
+          cursor: pointer; }
     .navigation ul li {
       user-select: none;
       position: relative;

@@ -42,21 +42,28 @@ let reBind = (stop = false) => {
 				.css('display', 'inline-block');
 		});
 		$(Li_el).find('a .closeTab').click(() => {
+			let hash = Li_el.querySelector('a').hash.substr(1);
+			document.location.hash = hash;
+			// if (hash != activeTab){
+			// 	$('.in .'+hash).remove();
+			// }
+			// var activeTab = hash;
 			$('.in div[style="display: block;"]').css('display', 'none');
 			setTimeout(() => {
 				if (list[i+1] != undefined){
-					list[i+1].className = 'list active';
 					list[i+1].click();
 				} else {
-					list[i-1].className = 'list active';
+					list[i-1].click();
 					list[i-1].click();
 				}
-				Li_el.remove();
+				setTimeout(() => {
+					Li_el.remove();
+				}, 10);
 			}, 10);
 		});
 		Li_el.onclick = () => {
 			let hash = Li_el.querySelector('a').hash.substr(1);
-			$('input').val('Типа путь: path/'+hash);
+			$('input').val('path/'+hash);
 			let o = 0;
 			while (o < list.length){
 				list[o].className = 'list';
@@ -96,7 +103,9 @@ let BindPannels = () => {
 			$('li.active').find('.title').html(name);
 			$('li.active').find('.icon ion-icon').remove();
 			$('li.active').find('.icon').append(`<ion-icon name="${icon}"></ion-icon>`);
-			$('.in').append(`<div class="${name}" style="display: none;"></div>`);
+			if ($('.in .'+name).length == 0){
+				$('.in').append(`<div class="${name}" style="display: none;"></div>`);
+			}
 			document.location.hash = '#'+name;
 			$('li.active').click();
 		});
@@ -108,6 +117,9 @@ let BindPannels = () => {
 // При закрытии смотрим Сколько блоков показано если больше одного
 // Смотрим вкладку с каким именем закрывали последней
 // И просртранства с таким именем Показываем
+
+
+// При закрытии вкладки остаётся закрытое пространство
 var BindPannelsBool = false;
 let reFunc = function(){
 	$('ul').append(`<li class="list">
