@@ -1,4 +1,6 @@
 // add active class in selected list item
+
+let SiteHistory = [];
 let $$ = (query) => {
 	return document.querySelectorAll(query);
 };
@@ -9,10 +11,53 @@ let getParent = (el_to, count = 1) => {
 	}
 	return el;
 };
+
+let hasOneSelect = () => $$('.list.active').length > 0;
+
+let getIconFromHash = (hash) => {
+	return SiteHistory.filter(HisElement => {
+		if (HisElement.path == hash) return HisElement.icon;
+	})[0].icon;
+};
+
+let ToBack = (fromHash, ToHash) => {
+	let icons = {
+		'New_Tab': 'browsers-outline'
+	};
+	let icon = icons.hasOwnProperty(ToHash) ? icons[ToHash] : getIconFromHash(ToHash);
+	if (typeof icon !== 'undefined'){
+		console.log('icon is:', icon);
+	} else {
+		console.log('[ERROR][icon is]:', getIconFromHash(ToHash));
+	}
+	$('.'+ToHash).css('display', 'block');
+	$('.'+fromHash).css('display', 'none');
+	$('li.active').find('a').attr('href', '#'+ToHash);
+	$('li.active').find('.title').html(ToHash);
+	$('li.active').find('.icon').append(`<ion-icon name="${icon}"></ion-icon>`);
+	$('li.active').find('.icon ion-icon')[0].remove();
+	if ($('.in .'+ToHash).length == 0){
+		$('.in').append(`<div class="${ToHash}" style="display: none;"></div>`);
+	}
+	document.location.hash = '#'+ToHash;
+	$('input').val('path/'+ToHash);
+	// $('li.active').click();
+};
+
+let setActive = (tabId) => {
+	let tabs = $$('.list');
+	tabs.forEach((tab, tabSelectId) => {
+		// const selectTitle = $(tab).find('a .title').text();
+		if (tabId == tabSelectId){
+			$(tab).click();
+		}
+	});
+};
+
 let reBind = (stop = false) => {
 	var titles = {
 		'grid': 'main menu',
-		'profile': 'profile'
+		'profile': 'my page'
 	};
 	var list = $$('.list');
 	// console.clear();
@@ -48,22 +93,42 @@ let reBind = (stop = false) => {
 			// 	$('.in .'+hash).remove();
 			// }
 			// var activeTab = hash;
-			$('.in div[style="display: block;"]').css('display', 'none');
+			$('.in .'+hash+'[style="display: block;"]').css('display', 'none');
 			setTimeout(() => {
-				if (list[i+1] != undefined){
+				if (list[i+1] !== undefined){
+					list[i+1].click();
 					list[i+1].click();
 				} else {
-					list[i-1].click();
-					list[i-1].click();
+					setTimeout(() => {
+						let d = 1;
+						while (!hasOneSelect() && d <= 10) {
+							setActive(i-1);
+							d++;
+						}
+					}, 30);
 				}
 				setTimeout(() => {
 					Li_el.remove();
-				}, 10);
+				}, 11);
 			}, 10);
 		});
 		Li_el.onclick = () => {
 			let hash = Li_el.querySelector('a').hash.substr(1);
+			let icons = Li_el.querySelectorAll('a .icon').length > 1;
+			let icon = false;
+			if (icons){
+				let Iicon = Li_el.querySelectorAll('a .icon')[1];
+				icon = Iicon.querySelector('ion-icon').getAttribute('name');
+				// console.log(icon);
+				// console.log(Li_el.querySelectorAll('a .icon'));
+			} else {
+				icon = Li_el.querySelector('a .icon ion-icon').getAttribute('name');
+			}
 			$('input').val('path/'+hash);
+			// SiteHistory.push({
+			// 	path: hash,
+			// 	tabicon: icon
+			// });
 			let o = 0;
 			while (o < list.length){
 				list[o].className = 'list';
@@ -108,6 +173,10 @@ let BindPannels = () => {
 			}
 			document.location.hash = '#'+name;
 			$('li.active').click();
+			SiteHistory.push({
+				path: name,
+				icon: icon
+			});
 		});
 	}
 };

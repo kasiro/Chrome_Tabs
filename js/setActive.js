@@ -1,8 +1,8 @@
 setTimeout(() => {
-	var menuItem = document.location.hash;
+	let menuItem = document.location.hash;
 	// console.log('item: ', menuItem);
-	var list = document.querySelectorAll('.list');
-	var h;
+	let list = document.querySelectorAll('.list');
+	let h;
 	for (let i = 0; i < list.length; i++){
 		h = list[i].querySelector('a').hash.substr(1);
 		//- console.log('href: ', list[i].querySelector('a').hash);
@@ -15,7 +15,7 @@ setTimeout(() => {
 		}
 	}
 	if (document.querySelectorAll('.list.active').length === 0){
-		var list = document.querySelectorAll('.list');
+		let list = document.querySelectorAll('.list');
 		list[0].className = 'list active';
 		list[0].click();
 	}

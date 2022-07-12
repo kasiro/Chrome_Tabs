@@ -63,19 +63,41 @@ body {
 	position: fixed;
 	width: 97.5%;
 	height: 60px;
-	@include shadow($shadow_color);
-	@include main-radius('top', 20px);
-	@include main-radius('bottom', 20px);
 	// border-radius: 15px;
 	background-color: $bg_color;
 	top: 110px;
 	left: 20px;
+	.arrow {
+		z-index: 11;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 60px;
+		height: 100%;
+		@include shadow($shadow_color);
+		@include main-radius('top', 10px);
+		@include main-radius('bottom', 10px);
+		float: left;
+		margin-right: 10px;
+		@include shadow($shadow_color);
+		@include main-radius('top', 10px);
+		@include main-radius('bottom', 10px);
+		ion-icon {
+			font-size: 1.5em;
+		}
+		&:hover {
+			cursor: pointer;
+		}
+	}
 	.bar_content {
+		z-index: 11;
 		@include main-radius('top', 10px);
 		@include main-radius('bottom', 10px);
 		// border-radius: 10px;
+		@include shadow($shadow_color);
 		background-color: $bg_color;
-		width: 100%;
+		width: 50%;
 		height: 100%;
 		outline: none;
 		border: none;

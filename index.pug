@@ -81,8 +81,24 @@ block content
 				span.icon
 					+IconOutline('add')(class="add-tab")
 	.bar
-		input.bar_content(type="text")
+		-
+			var = {
+				'back': 'arrow-back',
+				'forward': 'arrow-forward',
+				'reload': 'reload'
+			};
+		each id, icon in iterEl
+			.arrow(id=id)
+				+IconOutline(icon)
+		//- #back.arrow
+		//- 	+IconOutline('arrow-back')
+		//- #forward.arrow
+		//- 	+IconOutline('arrow-forward')
+		//- #reload.arrow
+		//- 	+IconOutline('reload')
+		#feild
+			input.bar_content(type="text")
 	include main_content
 
 mixin style(path)
-	link(rel="stylesheet", href= path)
+	link(rel="stylesheet", href=path)
